@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title> </title>
+	<script type='text/javascript'>
+	function addE()
+	{
+		var target= event.target;
+			if(event.target.class === "list" && event.target.parentNode == ul || event.target.tagName!==ul)
+			{			
+				var list = document.getElementById(event.target.id);
+
+					mUl = document.createElement("ul");
+			 		liNew = document.createElement("li");
+					liNew.appendChild(document.createTextNode(target.id+(event.target.childElementCount+1)));
+					liNew.setAttribute("id",target.id+(event.target.childElementCount+1));
+					mUl.appendChild(liNew);
+			 		target.appendChild(mUl);
+			}
+			event.stopPropagation();
+	}
+	function add()
+	{
+		ul = document.getElementById("main");
+		ul.addEventListener("click",addE() ,false);
+		event.stopPropagation();
+	}
+	</script>
+</head>
+<body>
+	<ul id="main" onClick="add();">
+		<li id="A" class="list">A</li>
+		<li id="B" class="list">B</li>
+		<li id="C" class="list">C</li>
+	</ul>
+</body>
+<html>
